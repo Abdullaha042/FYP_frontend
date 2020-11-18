@@ -1,0 +1,50 @@
+footer {
+    color: #999999;
+    display: flex;
+    justify-content: space-around;
+}
+
+footer,
+.main-footer,
+.main-footer div,
+p,
+h3,
+li,
+.sub-footer,
+.main-footer ul {
+    background-color: #282828;
+}
+
+footer .main-footer {
+    margin: 10px 0px;
+    display: flex;
+    padding: 10px;
+}
+
+footer .main-footer .sub-footer {
+    padding: 10px;
+}
+
+footer .main-footer .main-footer-btn {
+    padding: 3px 35px;
+    color: #999999;
+}
+
+footer .border-footer {
+    border-right: 1px solid #999999;
+    border-left: 1px solid #999999;
+}
+
+@media all and (max-width:768px) {
+    footer {
+        display: block;
+    }
+    footer .main-footer {
+        display: block;
+    }
+    footer .border-footer {
+        border-left: 0px;
+        border-right: 0px;
+        padding: 0px;
+    }
+}
