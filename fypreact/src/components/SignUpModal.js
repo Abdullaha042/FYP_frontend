@@ -1,23 +1,12 @@
 import React from 'react'
 import './SignIn.css';
-import { faBars, faHome } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import GoogleLogin from 'react-google-login'
 
 class SignUpModal extends React.Component{
 
     constructor(props){
         super(props);
         this.state={postId: 0};
-        this.state={google:"notExists"}
-        this.state={selectAccount:"False"}
-
-        this.state = {mail: ''};
-        this.state = {firstName: ''};
-        this.state = {lastName: ''};
-        this.state = {googleid: ''};
-        this.state = {imageurl: ''};
-        this.state = {myname: ''};
+        this.state={userAccount: 'notExists'};
 
         this.state = {
             mydata: []
@@ -38,53 +27,34 @@ class SignUpModal extends React.Component{
         });
     }
 
-    //google login logic function
-    responseGoogle = (response)=>{
-
-        console.log(response.profileObj);
-
-        this.setState({ mail: response.profileObj.email });
-        this.setState({ firstName: response.profileObj.givenName });
-        this.setState({ lastName: response.profileObj.familyName });
-        this.setState({ googleid: response.profileObj.googleId });
-        this.setState({ imageurl: response.profileObj.imageUrl });
-        this.setState({ myname: response.profileObj.name });
-
-        this.setState({ selectAccount: "True" });
-
-
-        for (var i = 0; i < this.state.mydata.length; i++)
-        {
-            if (this.state.mydata[i].email === this.state.mail)//if email already exists
-            {
-                alert("email already exists! Signup with another email")
-                this.setState({ google: "Exists" });
-                break;
-            }
-            else
-            {
-                this.setState({ google: "notExists" });
-            }
-        }
+    testing =(event)=>{
+    alert("test");
+    this.setState({userAccount:"myname"});
     }
-
-responseGoogleFail = () =>{
-    alert("Google Authentication Error");
-}
 
 //Submition of Form
     handleFormSubmit = (event) => {
 
-    if(this.state.selectAccount === "True")//means choose verified google account first
-    {
-        if(this.state.google === "notExists")//email doesnot exists, so continue to make your account
+    const nm = event.target.elements.name.value;
+    const usrnm = event.target.elements.username.value;
+    const dept = event.target.elements.department.value;
+    const pass = event.target.elements.password.value;
+    const confirmPass = event.target.elements.confirmpassword.value;
+
+    var access = 0;
+    for (var i = 0; i < this.state.mydata.length; i++)
         {
-            //getting values from input fields
-            const pass = event.target.elements.password.value;
-            const confirmPass = event.target.elements.confirmpassword.value;
+            if (this.state.mydata[i].username === usrnm)//if username already exists
+            {
+                alert("This Username already exists")
+                access = 1;
+                break;
+            }
+        }
 
-            var obj = { email: this.state.mail, givenName: this.state.firstName, familyName: this.state.lastName, googleId : this.state.googleid, imageUrl:"post image url here" ,name : "post user name here", password:pass };
-
+        if(access === 0)//username does not exists in database, so continue to make your account
+        {
+            var obj = { username: usrnm, name: nm, department: dept, password : pass};
             if(pass === confirmPass)
             {
                 const requestOptions = {
@@ -105,23 +75,12 @@ responseGoogleFail = () =>{
             }
 
         }
-        else//email exists
-        {
-            alert("Email Already Exists")
-        }
-    }
-    else
-    {
-        alert("Choose Verified Google Account First")
-    }
-
 
 }
 
-
     render()
     {
-
+    //testing github
     return ( <div>
                 <div className = "container" >
                 <div className = "row-fluid main-pg" >
@@ -129,32 +88,36 @@ responseGoogleFail = () =>{
                 <h1> Sign Up Page </h1>
                 </div>
 
-                <div className = "col-lg-6 offset-lg-0 offset-md-1 offset-sm-1 col-sm-10 col-md-10 main-login-pg row" >
+      <div className = "col-lg-6 offset-lg-0 offset-md-1 offset-sm-1 col-sm-10 col-md-10 main-login-pg row" >
 
             <div className = "col-md-7 col-sm-12 main-login-sub-pg-2" >
 
-            <button class="btn">
-                <GoogleLogin clientId="916651666356-16h5upcresdk1uugh5m6r6t85q3kmhbb.apps.googleusercontent.com"
-                buttonText="Use your Gmail Account"
-                onSuccess={this.responseGoogle}
-                onFailure={this.responseGoogleFail}
-                cookiePolicy={'single_host_origin'}/>
-            </button>
+            <form action = "" method="" onSubmit={this.handleFormSubmit} >
 
+                <h5 >Enter Name </h5>
+                <input type = "text" name="name" placeholder = "Name" required/ >
 
-                <form action = "" method="" onSubmit={this.handleFormSubmit} >
-                <h5 >Enter Password </h5>
-                <input type = "password" name="password" placeholder = "Password" onChange={this.myChangeHandelerPassword} required / >
+                <h5 >Enter User Name </h5>
+                <input type = "text" name="username" placeholder = "User Name" required/ >
+
+                <h5 >Set Password </h5>
+                <input type = "password" name="password" placeholder = "Password" required/ >
                 <h5 >Confirm Password </h5>
                 <input type = "password" name="confirmpassword" placeholder = "Confirm Password" required/ >
+
+                Select Department
+                <select name="department" id="department" style={{color:"white"}}>
+                    <option value="land" style={{color:"white"}}>Land</option>
+                    <option value="town" style={{color:"white"}}>Town</option>
+                    <option value="civil" style={{color:"white"}} >Civil</option>
+                    <option value="market" style={{color:"white"}}>Market</option>
+                </select>
+
                 <div className = "login-btns" >
                 <button type = "submit" className = "login-btn btn" > Sign Up < /button>
                 <button type = "" className = "signup-btn btn" > Cancel < /button> </div>
 
-        </form>
-
-
-
+            </form>
             </div>
 
             </div>
@@ -164,7 +127,7 @@ responseGoogleFail = () =>{
 
     )
 
-    }//render
+    }
 }
 
 export default SignUpModal

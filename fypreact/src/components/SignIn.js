@@ -1,8 +1,5 @@
 import React from 'react'
 import './SignIn.css';
-import { faBars, faHome } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-
 
 class SignIn extends React.Component {
 
@@ -11,7 +8,6 @@ class SignIn extends React.Component {
         this.state = {
             mydata: []
         };
-
     }
 
 componentDidMount(){
@@ -29,24 +25,27 @@ fetchData = (event) => {
 }
 
 handleFormSubmit = (event) =>{
-    var mail = event.target.elements.email.value;
+    var user = event.target.elements.username.value;
     var pass = event.target.elements.password.value;
+    var account=0;
     for (var i = 0; i < this.state.mydata.length; i++)
     {
-        if (this.state.mydata[i].email === mail && this.state.mydata[i].password === pass)
+        if (this.state.mydata[i].username === user && this.state.mydata[i].password === pass)
         {
             alert("Access Granted")
+            account=1;
             break;
         }
-        else if(this.state.mydata[i].email === mail && this.state.mydata[i].password !== pass)
+        else if(this.state.mydata[i].username === user && this.state.mydata[i].password !== pass)
         {
-            alert("Access Denied!!! incorrect password for " + mail)
+            alert("Access Denied!!! incorrect password for " + user)
+            account=1;
             break;
         }
-        else
-        {
-            console.log("not found");
-        }
+    }
+    if(account===0)
+    {
+        alert("Account not Found")
     }
 }
 
@@ -56,19 +55,17 @@ render(){
         <div className = "container" >
             <div className = "row-fluid main-pg" >
                 <div className = "col-lg-6 offset-lg-0 offset-md-2 offset-sm-1 col-sm-10 col-md-8 main-pg-heading" >
-                <h1 >Sign In Page </h1>
+                <h1>Sign In Page </h1>
                 </div>
 
                 <div className = "col-lg-6 offset-lg-0 offset-md-1 offset-sm-1 col-sm-10 col-md-10 main-login-pg row" >
 
-
-
                 <div className = "col-md-7 col-sm-12 main-login-sub-pg-2" >
 
-                    <form action = "" method="" onSubmit={this.handleFormSubmit}>
+                <form action = "" method="" onSubmit={this.handleFormSubmit}>
 
                 <h5 >Enter your Email </h5>
-                <input type = "text" name="email" placeholder = "Email"  required/ >
+                <input type = "text" name="username" placeholder = "Email"  required/ >
                 <h5 >Enter your Password </h5>
                 <input type = "password" name="password"placeholder = "Password" required / >
                 <div className = "login-btns" >

@@ -20,6 +20,7 @@ input {
 
 .main-pg .main-pg-heading {
     color: white;
+
 }
 
 .main-pg .main-login-pg {
@@ -50,7 +51,6 @@ input {
     padding-left: 30px;
     outline: none;
 }
-
 .login-icon {
     margin-right: 20px;
 }
