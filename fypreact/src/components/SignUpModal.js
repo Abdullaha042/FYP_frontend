@@ -102,7 +102,7 @@ class SignUpModal extends React.Component{
 
                 <h5 >Set Password </h5>
                 <input type = "password" name="password" placeholder = "Password" required/ >
-                <h5 >Confirm Password </h5>
+
                 <input type = "password" name="confirmpassword" placeholder = "Confirm Password" required/ >
 
                 Select Department
