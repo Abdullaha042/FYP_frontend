@@ -1,52 +1,46 @@
 import React from 'react'
 import './SignIn.css';
+import axiosInstance from '../axios.js'
 
 class SignIn extends React.Component {
 
-    constructor(props){
+constructor(props){
         super(props);
-        this.state = {
-            mydata: []
-        };
+        this.state = { mytokenaccess: '', mytokenrefresh:'' };
     }
-
-componentDidMount(){
-    this.fetchData();
-}
-
-fetchData = (event) => {
-    fetch("http://127.0.0.1:8000/adduser/")
-    .then(res => res.json())
-    .then((data) => {
-        this.setState({
-            mydata : data
-        })
-    });
-}
 
 handleFormSubmit = (event) =>{
-    var user = event.target.elements.username.value;
+    var mail = event.target.elements.email.value;
     var pass = event.target.elements.password.value;
-    var account=0;
-    for (var i = 0; i < this.state.mydata.length; i++)
-    {
-        if (this.state.mydata[i].username === user && this.state.mydata[i].password === pass)
-        {
-            alert("Access Granted")
-            account=1;
-            break;
-        }
-        else if(this.state.mydata[i].username === user && this.state.mydata[i].password !== pass)
-        {
-            alert("Access Denied!!! incorrect password for " + user)
-            account=1;
-            break;
-        }
-    }
-    if(account===0)
-    {
-        alert("Account not Found")
-    }
+
+        event.preventDefault();
+
+		axiosInstance
+			.post('token/', {
+				email: mail,
+				password: pass,
+			})
+			.then((res) => {
+				localStorage.setItem('access_token', res.data.access);
+				localStorage.setItem('refresh_token', res.data.refresh);
+				axiosInstance.defaults.headers['Authorization'] =
+					'JWT ' + localStorage.getItem('access_token');
+
+
+				this.setState({mytokenaccess: res.data.access});
+				this.setState({mytokenrefresh: res.data.refresh});
+				this.props.history.push('/AutherizedTestPage');
+				console.log(res);
+				console.log(res.data);
+
+			})
+			 .catch(function (error) {
+      console.log(error.response.data.message);
+      alert("Wrong Credentials");
+    });
+
+
+
 }
 
 render(){
@@ -64,8 +58,8 @@ render(){
 
                 <form action = "" method="" onSubmit={this.handleFormSubmit}>
 
-                <h5 >Enter your Email </h5>
-                <input type = "text" name="username" placeholder = "Email"  required/ >
+                <h5 >Enter Registered Email </h5>
+                <input type = "text" name="email" placeholder = "Email"  required/ >
                 <h5 >Enter your Password </h5>
                 <input type = "password" name="password"placeholder = "Password" required / >
                 <div className = "login-btns" >
@@ -87,3 +81,9 @@ export default SignIn
 
 
 
+//({pathname: '/AutherizedTestPage' ,
+//				        state :{
+ //                               mysentAccessToken : this.state.mytokenaccess,
+ //                               mysentRefreshToken : this.state.mytokenrefresh,
+ //                               }
+//				        });

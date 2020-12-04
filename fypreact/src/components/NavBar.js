@@ -9,6 +9,7 @@ import {
 } from "react-router-dom";
 import SignUpModal from "./SignUpModal";
 import SignIn from "./SignIn";
+import AutherizedTestPage from "./AutherizedTestPage";
 
 function NavBar() {
     const [open, setOpen] = useState(false);
@@ -70,6 +71,11 @@ function NavBar() {
         /> <
         Route path = "/SignUpModal"
         component = { SignUpModal }
+        />
+
+        <
+        Route path = "/AutherizedTestPage"
+        component = { AutherizedTestPage }
         />
 
         <

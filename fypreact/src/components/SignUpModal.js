@@ -1,81 +1,41 @@
 import React from 'react'
 import './SignIn.css';
+import axiosInstance from '../axios.js'
 
 class SignUpModal extends React.Component{
-
-    constructor(props){
-        super(props);
-        this.state={postId: 0};
-        this.state={userAccount: 'notExists'};
-
-        this.state = {
-            mydata: []
-        };
-    }
-
-    componentDidMount(){
-        this.fetchData();
-    }
-
-    fetchData = (event) => {
-        fetch("http://127.0.0.1:8000/adduser/")
-        .then(res => res.json())
-        .then((data) => {
-            this.setState({
-                mydata : data
-            })
-        });
-    }
-
-    testing =(event)=>{
-    alert("test");
-    this.setState({userAccount:"myname"});
-    }
 
 //Submition of Form
     handleFormSubmit = (event) => {
 
-    const nm = event.target.elements.name.value;
+    const mail = event.target.elements.email.value;
     const usrnm = event.target.elements.username.value;
-    const dept = event.target.elements.department.value;
+//    const dept = event.target.elements.department.value;
     const pass = event.target.elements.password.value;
     const confirmPass = event.target.elements.confirmpassword.value;
 
-    var access = 0;
-    for (var i = 0; i < this.state.mydata.length; i++)
-        {
-            if (this.state.mydata[i].username === usrnm)//if username already exists
-            {
-                alert("This Username already exists")
-                access = 1;
-                break;
-            }
-        }
-
-        if(access === 0)//username does not exists in database, so continue to make your account
-        {
-            var obj = { username: usrnm, name: nm, department: dept, password : pass};
-            if(pass === confirmPass)
-            {
-                const requestOptions = {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(obj),
-                };
-
-                fetch('http://127.0.0.1:8000/adduser/', requestOptions)
-                .then(response => response.json())
-                .then(data => this.setState({ postId: data.id }));
-
-                alert("Account Created. Login to access the Site");
-            }
-            else
-            {
-                alert("Password and Confirm Password must be same");
-            }
-
-        }
-
+    if(pass===confirmPass)
+    {
+        event.preventDefault();
+		    axiosInstance
+			    .post('user/register/', {
+				    email: mail,
+				    user_name: usrnm,
+				    password: pass
+			    })
+			    .then((res) => {
+				    this.props.history.push('/');
+				    console.log(res);
+				    console.log(res.data);
+			    })
+			    .catch(function (error) {
+                console.log(error.response.data.message);
+                alert("Account cannot be created: 1=>Maybe the account already Exists, 2=>Must have an 8 characters Password");
+            });
+    }
+    else
+    {
+        alert("Password and Confirm Password are Mismatching");
+    }
 }
 
     render()
@@ -95,13 +55,13 @@ class SignUpModal extends React.Component{
             <form action = "" method="" onSubmit={this.handleFormSubmit} >
 
                 <h5 >Enter Name </h5>
-                <input type = "text" name="name" placeholder = "Name" required/ >
+                <input type = "email" name="email" placeholder = "Email" required/ >
 
                 <h5 >Enter User Name </h5>
                 <input type = "text" name="username" placeholder = "User Name" required/ >
 
                 <h5 >Set Password </h5>
-                <input type = "password" name="password" placeholder = "Password" required/ >
+                <input type = "password" name="password" placeholder = "Password(must have 8 characters)" required/ >
                 <h5 >Confirm Password </h5>
                 <input type = "password" name="confirmpassword" placeholder = "Confirm Password" required/ >
 
