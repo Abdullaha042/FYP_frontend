@@ -9,6 +9,7 @@ constructor(props){
         this.state = { mytokenaccess: '', mytokenrefresh:'' };
     }
 
+
 handleFormSubmit = (event) =>{
     var mail = event.target.elements.email.value;
     var pass = event.target.elements.password.value;
@@ -30,6 +31,7 @@ handleFormSubmit = (event) =>{
 				this.setState({mytokenaccess: res.data.access});
 				this.setState({mytokenrefresh: res.data.refresh});
 				this.props.history.push('/AutherizedTestPage');
+				alert("Access Granted");
 				console.log(res);
 				console.log(res.data);
 
@@ -64,9 +66,11 @@ render(){
                 <input type = "password" name="password"placeholder = "Password" required / >
                 <div className = "login-btns" >
                 <button type = "submit" className = "login-btn btn" > LOGIN < /button>
-                <button type = ""className = "signup-btn btn" > SIGNUP < /button>
+                <button type = "" className = "signup-btn btn" > SIGNUP < /button>
                 </div>
-                </form> </div>
+                </form>
+                <a href="http://localhost:8000/reset_password/" >Forget Password</a>
+                </div>
 
                 </div>
                 </div>

@@ -29,7 +29,7 @@ class SignUpModal extends React.Component{
 			    })
 			    .catch(function (error) {
                 console.log(error.response.data.message);
-                alert("Account cannot be created: 1=>Maybe the account already Exists, 2=>Must have an 8 characters Password");
+                alert("Account cannot be created: 1) Maybe the account already Exists. 2) Must have an 8 character Password");
             });
     }
     else
