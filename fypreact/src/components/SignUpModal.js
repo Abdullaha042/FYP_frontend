@@ -43,14 +43,14 @@ class SignUpModal extends React.Component{
     //testing github
     return ( <div>
                 <div className = "container" >
-                <div className = "row-fluid main-pg" >
-                <div className = "col-lg-6 offset-lg-0 offset-md-2 offset-sm-1 col-sm-10 col-md-8 main-pg-heading" >
+                <div className = "row-fluid main-pgS" >
+                <div className = "col-lg-6 offset-lg-0 offset-md-2 offset-sm-1 col-sm-10 col-md-8 main-pg-headingS" >
                 <h1> Sign Up Page </h1>
                 </div>
 
-      <div className = "col-lg-6 offset-lg-0 offset-md-1 offset-sm-1 col-sm-10 col-md-10 main-login-pg row" >
+      <div className = "col-lg-6 offset-lg-0 offset-md-1 offset-sm-1 col-sm-10 col-md-10 main-login-pgS row" >
 
-            <div className = "col-md-7 col-sm-12 main-login-sub-pg-2" >
+            <div className = "col-md-7 col-sm-12 main-login-sub-pg-2S" >
 
             <form action = "" method="" onSubmit={this.handleFormSubmit} >
 
@@ -73,9 +73,9 @@ class SignUpModal extends React.Component{
                     <option value="market" style={{color:"white"}}>Market</option>
                 </select>
 
-                <div className = "login-btns" >
-                <button type = "submit" className = "login-btn btn" > Sign Up < /button>
-                <button type = "" className = "signup-btn btn" > Cancel < /button> </div>
+                <div className = "login-btnsS" >
+                <button type = "submit" className = "login-btnS btn" > Sign Up < /button>
+                <button type = "" className = "signup-btnS btn" > Cancel < /button> </div>
 
             </form>
             </div>
@@ -83,6 +83,7 @@ class SignUpModal extends React.Component{
             </div>
             </div>
             </div>
+
         </div>
 
     )

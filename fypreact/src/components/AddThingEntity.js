@@ -96,7 +96,7 @@ render(){
         type = "text" name="name" required
         placeholder = "Name" / >
         </div>
-        Customized Additional Fields
+        <b>Customized Additional Fields</b>
 
             {this.state.attributeInfo.map((item, index) => (
             <div>

@@ -5,25 +5,24 @@
 }
 
 *,
-.main-pg .main-login-pg,
-.main-login-sub-pg-1,
-.main-login-sub-pg-2,
-.main-pg .main-login-pg .main-login-sub-pg-2 form h5,
+.main-pgS .main-login-pgS,
+.main-login-sub-pg-1S,
+.main-login-sub-pg-2S,
+.main-pgS .main-login-pgS .main-login-sub-pg-2S form h5,
 input {
     background-color: #10293D;
 }
 
-.main-pg {
+.main-pgS {
     display: flex;
     padding: 40px 0px;
 }
 
-.main-pg .main-pg-heading {
+.main-pgS .main-pg-headingS {
     color: white;
-
 }
 
-.main-pg .main-login-pg {
+.main-pgS .main-login-pgS {
     color: #999999;
     display: flex;
     justify-content: space-around;
@@ -31,19 +30,19 @@ input {
     padding: 50px 0px;
 }
 
-.main-pg .main-login-pg .main-login-sub-pg-1 {
+.main-pgS .main-login-pgS .main-login-sub-pg-1S {
     display: flex;
     flex-direction: column;
     color: black;
 }
 
-.main-pg .main-login-pg .main-login-sub-pg-1 button {
+.main-pgS .main-login-pgS .main-login-sub-pg-1S button {
     color: black;
     margin: 10px 0px;
     padding: 5px 0px;
 }
 
-.main-login-pg .main-login-sub-pg-2 input {
+.main-login-pgS .main-login-sub-pg-2S input {
     border-radius: 20px;
     height: 33px;
     background-color: white;
@@ -51,65 +50,58 @@ input {
     padding-left: 30px;
     outline: none;
 }
-.login-icon {
+.login-iconS {
     margin-right: 20px;
 }
 
-.main-login-sub-pg-2 form {
+.main-login-sub-pg-2S form {
     display: flex;
     flex-direction: column;
     padding: 15px 0px;
 }
 
-.main-login-sub-pg-2 form h5,
+.main-login-sub-pg-2S form h5,
 input {
     color: white;
 }
 
-.main-login-sub-pg-2 .login-btns {
+.main-login-sub-pg-2S .login-btnsS {
     display: flex;
     justify-content: space-evenly;
 }
 
-.main-login-sub-pg-2 .login-btns button {
+.main-login-sub-pg-2S .login-btnsS button {
     padding: 7px 30px;
     margin-top: 20px;
 }
 
-.login-btn {
+.login-btnS {
     background-color: #282828;
     color: white;
 }
 
-.signup-btn {
+.signup-btnS {
     background-color: #999999;
     color: black;
 }
 
-.forget-pass-link {
+.forget-pass-linkS {
     color: #999999;
     cursor: pointer;
 }
 
-@media all and (max-width:576px) {
-    .main-login-pg {
-        padding-left: 50px;
-        margin-left: 0px;
-    }
-}
-
 @media all and (max-width:992px) {
-    .container .main-pg {
+    .container .main-pgS {
         display: block;
         align-items: center;
     }
 }
 
 @media all and (max-width:786px) {
-    .main-pg .main-login-pg {
+    .main-pgS .main-login-pgS {
         flex-direction: column-reverse;
     }
-    .main-pg .main-login-pg .main-login-sub-pg-1 {
+    .main-pgS .main-login-pgS .main-login-sub-pg-1S {
         display: flex;
         flex-direction: column-reverse;
         color: black;

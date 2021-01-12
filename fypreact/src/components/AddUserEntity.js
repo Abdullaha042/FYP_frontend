@@ -8,8 +8,9 @@ class AddUserEntity extends React.Component {
         this.state = {
         entityInfo: [],//holds all the data for this page
         attributeInfo: [],//holds the info of how many input fields we needs
+        inputJson: [],//tells us how many input fields you wants to create
 
-        inputJson: []
+        authUsers: []//holds all the users present in auth table
         };
     }
 
@@ -38,21 +39,32 @@ fetchInputFieldsData = () => {
                     inputJson : newElement//inputJson holds the name for all the fields
                 });
             }
-        console.log(this.state.inputJson)
     });
+}
+
+
+fetchAuthUsersData = () => {
+    fetch("http://127.0.0.1:8000/api/user/getauthusers/")//go to the views of entities app
+    .then(res => res.json())
+        .then((data) => {
+            this.setState({
+               authUsers  : data
+            })
+        });
 }
 
   componentDidMount() {
     this.fetchData();
     this.fetchInputFieldsData();
+    this.fetchAuthUsersData();
   }
 
 
     handleFormSubmit = (event) =>{
-    const name = event.target.elements.name.value.toLowerCase();
+    const email = event.target.elements.user_email.value.toLowerCase();
+    const parentEmail = event.target.elements.parent_email.value.toLowerCase();
 
         var myjson = {};
-        console.log(myjson);
 
         var i;
         for (i = 0; i < this.state.inputJson.length; i++) {
@@ -60,24 +72,25 @@ fetchInputFieldsData = () => {
            var newVal = document.getElementsByName(i)[0].value;
            myjson[newKey] = newVal;
         }
-    const cb = document.getElementById('interfaceCheckbox');
+        myjson["parent"] = parentEmail;
 
     //To Create The Entity
         var mytype="Staff";
-
             event.preventDefault();
             const requestOptions = {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ entity_type: mytype, entity_attributes: myjson, entity_name:name})
+            body: JSON.stringify({ entity_type: mytype, entity_attributes: myjson, entity_name:email})
         };
         fetch('http://127.0.0.1:8000/entity/addentity/', requestOptions)
         .then(response => response.json())
 
         localStorage.setItem("entityUniqueKeys", JSON.stringify(this.state.entityMustUniqueKey));
         alert("Staff Added");
-        window.location.replace("/");
 
+        //Changing the Auth User Table(NewUser)
+
+  window.location.replace("/");
 }
 
     render(){
@@ -92,15 +105,25 @@ fetchInputFieldsData = () => {
         Add Staff <
         /h1>
 
-        <
-        div >
-        <
-        input className = "input1"
-        type = "text" name="name" required
-        placeholder = "Name" / >
-        </div>
-        Customized Additional Fields
+        <div className = "input_div">
+        <label>User</label>
+        <select className = "input1"
+         type = "email" name="user_email" required>
+        {this.state.authUsers.map((item, index) => (
+                <option>{item.email}</option>
+        ))};
+        </select>
 
+        <label>Parent</label>
+        <select className = "input1"
+        type = "email" name="parent_email" required>
+        {this.state.authUsers.map((item, index) => (
+                <option>{item.email}</option>
+        ))};
+        </select>
+        </div>
+
+        <b>Customized Additional Fields</b>
             {this.state.attributeInfo.map((item, index) => (
             <div>
                 <input name= {index} type={JSON.parse(item.field_info)["Type"]} placeholder = {JSON.parse(item.field_info)["Placeholder"]}/>
@@ -110,7 +133,7 @@ fetchInputFieldsData = () => {
         <div className = "login-btns input_div" >
         By signing up I agree to the <
         a style = {
-            { color: "blue" } } > terms of service and privac policy < /a> <
+            { color: "blue" } } > terms of service and privacy policy < /a> <
         button type = "submit"
         className = "signup-btn btn btn-dark" > Register User < /button> <
         /div> <

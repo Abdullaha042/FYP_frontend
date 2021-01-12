@@ -9,7 +9,7 @@ import {
 } from "react-router-dom";
 import Entities from './Entities.js';
 import Roles from './Roles';
-import Organization from './Organization';
+import Organogram from './Organogram';
 
 class Admin extends React.Component {
 
@@ -68,22 +68,31 @@ render(){
         NavLink to = "/Organogram"
         style = {
             { textDecoration: "none", color: "white" } } > < button className = "btn btn-danger col-md-4 col-sm-10" > Organogram < /button></NavLink >
-
         <
         /div> <
         div className = "col-md-7 col-sm-7 col-xs-5 main-login-sub-pg-2 row" >
-        <
-        Entities > < /Entities> <
-        /div>
 
         <
-        /div> <
-        /div> <
-        /div>
+        Route path = "/"
+        exact component = { Entities }
+        /> <
+        Route path = "/Roles"
+        exact component = { Roles }
+        /> <
+        Route path = "/Organogram"
+        exact component = { Organogram }
+        />
 
-        <
-        /div> <
-        /HashRouter>
+        </div>
+
+        </div>
+
+        </div>
+
+
+        </div>
+        </div>
+        </HashRouter>
     )
     }
 }

@@ -96,8 +96,7 @@ render(){
         type = "text" name="name" required
         placeholder = "Name" / >
         </div>
-        Customized Additional Fields
-
+        <b>Customized Additional Fields</b>
             {this.state.attributeInfo.map((item, index) => (
             <div>
                 <input name= {index} type={JSON.parse(item.field_info)["Type"]} placeholder = {JSON.parse(item.field_info)["Placeholder"]}/>
