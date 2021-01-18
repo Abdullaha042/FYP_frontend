@@ -18,6 +18,8 @@ fetchData = () => {
         })
         console.log("Testing")
         console.log(data)
+        //console.log(this.state.StaffInfo[0]["entity_name"])
+        //console.log(this.state.StaffInfo[0]["entity_attributes"]["parent"])
     });
 }
 

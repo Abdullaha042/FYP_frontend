@@ -7,8 +7,8 @@ import {
 } from "react-router-dom";
 import AddDepartmentEntity from './AddDepartmentEntity';
 import AddThingEntity from './AddThingEntity';
-import AddUserEntity from './AddUserEntity';
-import AddInputFields from './AddInputFields';
+import AddUserEntity from './AddUserEntity'
+import AddInputFields from './AddInputFields'
 
 function Entities() {
     return ( <
@@ -24,38 +24,38 @@ function Entities() {
         div className = " input_div col-12"
         role = "group" >
         <
-        NavLink to = "/"
+        NavLink to = "/Entities/AddUserEntity"
         style = {
-            { textDecoration: "none", color: "white" } } > < button className = "btn btn-dark col-md-3 col-sm-10" > User/Staff < /button></NavLink >
+            { textDecoration: "none", color: "white" } } > < button className = "btn btn-dark col-md-3 col-sm-10" > User < /button></NavLink >
         <
-        NavLink to = "/AddThingEntity"
+        NavLink to = "/Entities/AddThingEntity"
         style = {
             { textDecoration: "none", color: "white" } } > < button className = "btn btn-dark col-md-3 col-sm-10" > Thing < /button></NavLink >
         <
-        NavLink to = "/AddDepartmentEntity"
+        NavLink to = "/Entities/AddDepartmentEntity"
         style = {
             { textDecoration: "none", color: "white" } } > < button className = "btn btn-dark col-md-3 col-sm-10" > Depatrment < /button></NavLink >
         <
-        NavLink to = "/AddInputFields"
+        NavLink to = "/Entities/AddInputFields"
         style = {
-            { textDecoration: "none", color: "white" } } > < button className = "btn btn-dark col-md-3 col-sm-10" > Add Fields < /button></NavLink >
+            { textDecoration: "none", color: "white" } } > < button className = "btn btn-dark col-md-3 col-sm-10" > Add Input Fields < /button></NavLink >
         <
         /div> <
         /div> <
         div >
         <
-        Route path = "/"
-        exact component = { AddUserEntity }
+        Route path = "Entities/AddUserEntity"
+        component = { AddUserEntity }
         /> <
         Route path = "/AddThingEntity"
-        exact component = { AddThingEntity }
+         component = { AddThingEntity }
         /> <
         Route path = "/AddDepartmentEntity"
-        exact component = { AddDepartmentEntity }
+         component = { AddDepartmentEntity }
         />
-         <
+        <
         Route path = "/AddInputFields"
-        exact component = { AddInputFields }
+        component = { AddInputFields }
         />
          <
         /div> <

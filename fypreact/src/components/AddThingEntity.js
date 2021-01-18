@@ -9,7 +9,10 @@ class AddThingEntity extends React.Component {
         entityInfo: [],//holds all the data for this page
         attributeInfo: [],//holds the info of how many input fields we needs
 
-        inputJson: []
+        inputJson: [],
+        registerThings:[],
+        thingsCheck:[]
+
         };
     }
 
@@ -43,14 +46,39 @@ fetchInputFieldsData = () => {
 }
 
 
+fetchRegisterThing = () => {
+    fetch("http://127.0.0.1:8000/entity/get_thing/")//go to the views of entities app
+    .then(res => res.json())
+        .then((data) => {
+            this.setState({
+               registerThings : data
+            })
+
+            var i;
+            for (i = 0; i < this.state.registerThings.length; i++) {
+                var newElement = this.state.thingsCheck.concat(this.state.registerThings[i]["entity_name"]);
+                this.setState({
+                    thingsCheck : newElement//array used for unique user
+                });
+            }
+
+        });
+}
+
+
+
   componentDidMount() {
     this.fetchData();
     this.fetchInputFieldsData();
+    this.fetchRegisterThing();
   }
 
     handleFormSubmit = (event) =>{
 
         const name = event.target.elements.name.value.toLowerCase();
+
+    if(this.state.thingsCheck.includes(name)===false)
+    {
         var mytype="Thing";
         var myjson = {};
         console.log(myjson);
@@ -76,7 +104,11 @@ fetchInputFieldsData = () => {
 
         alert("Thing Added to Company Records");
         window.location.replace("/");
-
+    }
+    else
+    {
+        alert("This Thing already exists in Company's Records")
+    }
 
 }
 render(){

@@ -10,7 +10,9 @@ class AddUserEntity extends React.Component {
         attributeInfo: [],//holds the info of how many input fields we needs
         inputJson: [],//tells us how many input fields you wants to create
 
-        authUsers: []//holds all the users present in auth table
+        authUsers: [],//holds all the users present in auth table
+        registerUsers:[],//holds all the registered users for parent
+        usersCheck:[]
         };
     }
 
@@ -50,6 +52,27 @@ fetchAuthUsersData = () => {
             this.setState({
                authUsers  : data
             })
+
+
+        });
+}
+
+fetchRegisterUsers = () => {
+    fetch("http://127.0.0.1:8000/entity/get_staff/")//go to the views of entities app
+    .then(res => res.json())
+        .then((data) => {
+            this.setState({
+               registerUsers  : data
+            })
+
+            var i;
+            for (i = 0; i < this.state.registerUsers.length; i++) {
+                var newElement = this.state.usersCheck.concat(this.state.registerUsers[i]["entity_name"]);
+                this.setState({
+                    usersCheck : newElement//array used for unique user
+                });
+            }
+
         });
 }
 
@@ -57,6 +80,7 @@ fetchAuthUsersData = () => {
     this.fetchData();
     this.fetchInputFieldsData();
     this.fetchAuthUsersData();
+    this.fetchRegisterUsers();
   }
 
 
@@ -75,7 +99,9 @@ fetchAuthUsersData = () => {
         myjson["parent"] = parentEmail;
 
     //To Create The Entity
-        var mytype="Staff";
+    if(this.state.usersCheck.includes(email)===false)
+    {
+       var mytype="Staff";
             event.preventDefault();
             const requestOptions = {
             method: 'POST',
@@ -87,10 +113,13 @@ fetchAuthUsersData = () => {
 
         localStorage.setItem("entityUniqueKeys", JSON.stringify(this.state.entityMustUniqueKey));
         alert("Staff Added");
-
         //Changing the Auth User Table(NewUser)
-
-  window.location.replace("/");
+        window.location.replace("/");
+  }
+  else
+  {
+    alert("This User already exists in Company's Database");
+  }
 }
 
     render(){
@@ -116,9 +145,9 @@ fetchAuthUsersData = () => {
 
         <label>Parent</label>
         <select className = "input1"
-        type = "email" name="parent_email" required>
-        {this.state.authUsers.map((item, index) => (
-                <option>{item.email}</option>
+        type = "email" name="parent_email">
+        {this.state.registerUsers.map((item, index) => (
+                <option>{item.entity_name}</option>
         ))};
         </select>
         </div>

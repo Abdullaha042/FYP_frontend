@@ -8,7 +8,9 @@ class AddDepartmentEntity extends React.Component {
         entityInfo: [],//holds all the data for this page
         attributeInfo: [],//holds the info of how many input fields we needs
 
-        inputJson: []
+        inputJson: [],
+        registerDepartment:[],
+        departmentCheck:[]
         };
     }
 
@@ -42,15 +44,37 @@ fetchInputFieldsData = () => {
 }
 
 
+fetchRegisterDepartment = () => {
+    fetch("http://127.0.0.1:8000/entity/get_department/")//go to the views of entities app
+    .then(res => res.json())
+        .then((data) => {
+            this.setState({
+               registerDepartment  : data
+            })
+
+            var i;
+            for (i = 0; i < this.state.registerDepartment.length; i++) {
+                var newElement = this.state.departmentCheck.concat(this.state.registerDepartment[i]["entity_name"]);
+                this.setState({
+                    departmentCheck : newElement//array used for unique user
+                });
+            }
+        });
+}
+
+
   componentDidMount() {
     this.fetchData();
     this.fetchInputFieldsData();
+    this.fetchRegisterDepartment();
   }
 
 handleFormSubmit = (event) =>{
 
     const name = event.target.elements.name.value.toLowerCase();
 
+  if(this.state.departmentCheck.includes(name)===false)
+  {
     var mytype="Organization";
     var myjson = {};
     console.log(myjson);
@@ -73,6 +97,11 @@ handleFormSubmit = (event) =>{
         //.then(data => this.setState({ postId: data.id }));
         alert("Organization Added to Company Records");
         window.location.replace("/");
+    }
+    else
+    {
+        alert("This Department already exists in Company's Records")
+    }
 
 }
 

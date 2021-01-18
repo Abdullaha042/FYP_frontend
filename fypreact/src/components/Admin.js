@@ -1,7 +1,8 @@
 import React from 'react'
 import './Admin.css';
 import pic from '../image/adminpic.jpg'
-
+import { faBars, faHome } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
     Route,
     NavLink,
@@ -9,11 +10,9 @@ import {
 } from "react-router-dom";
 import Entities from './Entities.js';
 import Roles from './Roles';
-import Organogram from './Organogram';
+import Organogram from './Organo';
 
-class Admin extends React.Component {
-
-render(){
+function Admin() {
 
     return ( <
         HashRouter >
@@ -35,8 +34,7 @@ render(){
         alt = "admin logo"
         style = {
             { color: "black" } }
-        />
-         <
+        /> <
         /div> <
         div className = 'admin_detail' >
         <
@@ -56,24 +54,37 @@ render(){
         div className = "col-lg-8 offset-lg-0 offset-md-0 offset-sm-0 col-sm-12 col-md-12 main-login-pg row" >
         <
         div className = "col-md-12 col-sm-12 main-login-sub-pg-1" >
-        <
-        NavLink to = "/"
-        style = {
-            { textDecoration: "none", color: "white" } } > < button className = "btn btn-danger col-md-3 col-sm-10" > Entities < /button></NavLink >
-        <
-        NavLink to = "/Roles"
-        style = {
-            { textDecoration: "none", color: "white" } } > < button className = "btn btn-danger col-md-3 col-sm-10" > Roles/Posts < /button></NavLink >
-        <
-        NavLink to = "/Organogram"
-        style = {
-            { textDecoration: "none", color: "white" } } > < button className = "btn btn-danger col-md-4 col-sm-10" > Organogram < /button></NavLink >
-        <
-        /div> <
+
+
+       <NavLink to = "/Entities"
+
+            style = {
+            { textDecoration: "none", color: "white" } } >
+            < button className = "btn btn-danger col-md-3 col-sm-10" >Entities< /button>
+       </NavLink >
+
+
+       <NavLink to = "/Roles"
+
+            style = {
+                { textDecoration: "none", color: "white" } } >
+                < button className = "btn btn-danger col-md-3 col-sm-10" >Roles< /button>
+       </NavLink >
+
+
+        <NavLink to = "/Organogram"
+
+            style = {
+                { textDecoration: "none", color: "white" } } >
+                < button className = "btn btn-danger col-md-4 col-sm-10" >Organogram< /button>
+        </NavLink >
+
+
+        </div> <
         div className = "col-md-7 col-sm-7 col-xs-5 main-login-sub-pg-2 row" >
 
-        <
-        Route path = "/"
+
+        <Route path = "/Entities"
         exact component = { Entities }
         /> <
         Route path = "/Roles"
@@ -83,18 +94,17 @@ render(){
         exact component = { Organogram }
         />
 
-        </div>
 
         </div>
+        <
+        /div> <
+        /div> <
+        /div>
 
-        </div>
-
-
-        </div>
-        </div>
-        </HashRouter>
+        <
+        /div> <
+        /HashRouter>
     )
-    }
 }
 
 export default Admin
