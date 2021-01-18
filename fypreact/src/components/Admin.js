@@ -6,7 +6,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
     Route,
     NavLink,
-    HashRouter
+    BrowserRouter
 } from "react-router-dom";
 import Entities from './Entities.js';
 import Roles from './Roles';
@@ -15,7 +15,7 @@ import Organogram from './Organo';
 function Admin() {
 
     return ( <
-        HashRouter >
+        BrowserRouter >
         <
         div >
         <
@@ -103,7 +103,7 @@ function Admin() {
 
         <
         /div> <
-        /HashRouter>
+        /BrowserRouter>
     )
 }
 

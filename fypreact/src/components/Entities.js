@@ -2,7 +2,7 @@ import React from 'react'
 import {
     Route,
     NavLink,
-    HashRouter,
+    BrowserRouter,
     Switch
 } from "react-router-dom";
 import AddDepartmentEntity from './AddDepartmentEntity';
@@ -12,7 +12,7 @@ import AddInputFields from './AddInputFields'
 
 function Entities() {
     return ( <
-        HashRouter >
+        BrowserRouter >
         <
         div >
         <
@@ -44,23 +44,23 @@ function Entities() {
         /div> <
         div >
         <
-        Route path = "Entities/AddUserEntity"
+        Route path = "/Entities/AddUserEntity"
         component = { AddUserEntity }
         /> <
-        Route path = "/AddThingEntity"
+        Route path = "/Entities/AddThingEntity"
          component = { AddThingEntity }
         /> <
-        Route path = "/AddDepartmentEntity"
+        Route path = "/Entities/AddDepartmentEntity"
          component = { AddDepartmentEntity }
         />
         <
-        Route path = "/AddInputFields"
+        Route path = "/Entities/AddInputFields"
         component = { AddInputFields }
         />
          <
         /div> <
         /div> <
-        /HashRouter>
+        /BrowserRouter>
     )
 }
 
