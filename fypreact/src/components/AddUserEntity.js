@@ -12,7 +12,18 @@ class AddUserEntity extends React.Component {
 
         authUsers: [],//holds all the users present in auth table
         registerUsers:[],//holds all the registered users for parent
-        usersCheck:[]
+        usersCheck:[],
+
+
+
+        //new prototype
+        entityPrototype:[],
+        posts:[],
+        selectedAttributesString : [],
+        Keys:[],
+
+
+
         };
     }
 
@@ -52,8 +63,6 @@ fetchAuthUsersData = () => {
             this.setState({
                authUsers  : data
             })
-
-
         });
 }
 
@@ -76,37 +85,81 @@ fetchRegisterUsers = () => {
         });
 }
 
+
+
+fetchPrototype = () => {
+    fetch("http://127.0.0.1:8000/entity/get_conf_staff/")
+    .then(res => res.json())
+    .then((data) => {
+        this.setState({
+            entityPrototype : data
+        })
+
+        var i;
+        for (i = 0; i < this.state.entityPrototype.length; i++) {
+            var newElement = this.state.posts.concat(this.state.entityPrototype[i]["name"]);
+            this.setState({
+                posts : newElement//array used for unique user
+            });
+        }
+    });
+}
+
+
+
   componentDidMount() {
     this.fetchData();
     this.fetchInputFieldsData();
     this.fetchAuthUsersData();
     this.fetchRegisterUsers();
+
+    //newprototype
+    this.fetchPrototype();
   }
 
+
+    changeFunction = (event)=>{
+        alert(event.target.value);
+
+        var i;
+        i = 0;
+        var found=false
+        while( i < this.state.entityPrototype.length && found==false )
+        {
+            if(event.target.value === this.state.entityPrototype[i]["name"])
+            {
+                var myJSON=this.state.entityPrototype[i]["attributes"]
+                    this.setState({ selectedAttributesString: myJSON });
+                found = true
+            }
+            i=i+1;
+        }
+    }
 
     handleFormSubmit = (event) =>{
     const email = event.target.elements.user_email.value.toLowerCase();
     const parentEmail = event.target.elements.parent_email.value.toLowerCase();
+    const entityDescType = event.target.elements.entity_desc_type.value;
 
         var myjson = {};
-
         var i;
-        for (i = 0; i < this.state.inputJson.length; i++) {
-           var newKey = this.state.inputJson[i];
+        for (i = 0; i < Object.keys(this.state.selectedAttributesString).length; i++) {
+           var newKey = Object.keys(this.state.selectedAttributesString)[i];
            var newVal = document.getElementsByName(i)[0].value;
            myjson[newKey] = newVal;
         }
         myjson["parent"] = parentEmail;
 
+
     //To Create The Entity
     if(this.state.usersCheck.includes(email)===false)
     {
-       var mytype="Staff";
+       var mytype="User";
             event.preventDefault();
             const requestOptions = {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ entity_type: mytype, entity_attributes: myjson, entity_name:email})
+            body: JSON.stringify({ entity_type: mytype, entity_attributes: myjson, entity_name:email,entity_desc_type:entityDescType})
         };
         fetch('http://127.0.0.1:8000/entity/addentity/', requestOptions)
         .then(response => response.json())
@@ -122,13 +175,13 @@ fetchRegisterUsers = () => {
   }
 }
 
+
     render(){
 
     return ( <
         div >
         <
         form action = "" onSubmit={this.handleFormSubmit} >
-
         <
         h1 >
         Add Staff <
@@ -146,18 +199,33 @@ fetchRegisterUsers = () => {
         <label>Parent</label>
         <select className = "input1"
         type = "email" name="parent_email">
+
         {this.state.registerUsers.map((item, index) => (
                 <option>{item.entity_name}</option>
         ))};
         </select>
         </div>
 
-        <b>Customized Additional Fields</b>
-            {this.state.attributeInfo.map((item, index) => (
-            <div>
-                <input name= {index} type={JSON.parse(item.field_info)["Type"]} placeholder = {JSON.parse(item.field_info)["Placeholder"]}/>
-            </div>
+
+        <div className = "input_div">
+        <label>Post</label>
+        <select className = "input1" onChange={this.changeFunction}
+         type = "text" name="entity_desc_type" required>
+         <option></option>
+        {this.state.posts.map((item, index) => (
+                <option value={item}>{item}</option>
         ))};
+        </select>
+        </div>
+
+        <h3>Customized Fields</h3>
+
+                {Object.keys(this.state.selectedAttributesString).map((item,index)=>(
+                    <div>
+                        <input name={index} type={this.state.selectedAttributesString[item]} placeholder = {item} />
+                    </div>
+                ))}
+
 
         <div className = "login-btns input_div" >
         By signing up I agree to the <

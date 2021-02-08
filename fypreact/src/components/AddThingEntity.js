@@ -134,7 +134,7 @@ render(){
             <div>
                 <input name= {index} type={JSON.parse(item.field_info)["Type"]} placeholder = {JSON.parse(item.field_info)["Placeholder"]}/>
             </div>
-        ))};
+        ))}
 
 
         <div className = "login-btns input_div" >

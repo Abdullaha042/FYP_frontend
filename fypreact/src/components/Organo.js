@@ -129,14 +129,6 @@ diagram = Diagram.create(document.getElementById("diagramCanvas"));
   diagram.setTheme(theme);
   diagram.setShadowsStyle(MindFusion.Diagramming.ShadowsStyle.None);
 
-  var array = [
-    ["Land", "Ali", "null"],
-    ["Water", "Usman", "Ali"],
-    ["Civil", "Umer", "Ali"],
-    ["Civil", "Umer1", "Usman"],
-
-  ];
-
 
   for (var i = 0; i < this.state.StaffInfo.length; i++)
   {
@@ -146,6 +138,7 @@ diagram = Diagram.create(document.getElementById("diagramCanvas"));
   node.setBounds(new Rect(80, 225, 60, 25));
   node.setFaculty(this.state.StaffInfo[i]["entity_name"]);
   node.setDean(this.state.StaffInfo[i]["entity_type"]);
+  node.setDetails(this.state.StaffInfo[i]["entity_desc_type"])
   node.setId(this.state.StaffInfo[i]["entity_name"]);
   node.getComponent("Underline").brush = "#9edee8";
   node.getComponent("Underline").pen = "#04316a";
