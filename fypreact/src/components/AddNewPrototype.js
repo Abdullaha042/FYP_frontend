@@ -79,9 +79,6 @@ fetchData = () => {
       if(this.state.entityCheck.includes(protoTypeName)===false)
       {
 
-
-      if(protoTypeName!='')
-      {
         const nameED = event.target.elements.name.value.toLowerCase();
         const typeED = event.target.elements.proto_type.value;
         var myjson = {};
@@ -102,16 +99,11 @@ fetchData = () => {
 
         alert("Prototype of Entity Registered");
         window.location.replace("/");
-      }
-      else
-      {
-        alert("must have to add Prototype Name")
-      }
 
       }
       else
       {
-        alert("already present entity");
+        alert("Prototype Already Registered");
       }
     }
 }
@@ -131,11 +123,12 @@ render(){
         <
         input className = "input1"
         type = "text" name="name"
-        placeholder = "Prototype Name" / >
+        placeholder = "Prototype Name" required / >
 
         <select type = "text"
-        name="proto_type" >
-        <option defaultValue >User< /option>
+        name="proto_type" required>
+        <option defaultValue></option>
+        <option>User< /option>
         <option>Department</option>
         <option>Thing</option>
         </select>
@@ -163,7 +156,7 @@ render(){
             <div>
             <button name = {index} onClick={() => (this.state.button = index)}> Remove {item.name}</button>
             </div>
-        ))};
+        ))}
 
 
         <div className = "login-btns input_div" >
