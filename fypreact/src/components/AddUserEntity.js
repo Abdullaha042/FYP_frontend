@@ -7,8 +7,6 @@ class AddUserEntity extends React.Component {
         super(props);
         this.state = {
         entityInfo: [],//holds all the data for this page
-        attributeInfo: [],//holds the info of how many input fields we needs
-        inputJson: [],//tells us how many input fields you wants to create
 
         authUsers: [],//holds all the users present in auth table
         registerUsers:[],//holds all the registered users for parent
@@ -20,8 +18,6 @@ class AddUserEntity extends React.Component {
         entityPrototype:[],
         posts:[],
         selectedAttributesString : [],
-        Keys:[],
-
 
 
         };
@@ -34,24 +30,6 @@ fetchData = () => {
         this.setState({
             entityInfo : data
         })
-    });
-}
-
-fetchInputFieldsData = () => {
-    fetch("http://127.0.0.1:8000/entity/attributes_staff")//go to the views of entities app
-    .then(res => res.json())
-    .then((data) => {
-        this.setState({
-            attributeInfo : data
-        })
-
-            var i;
-            for (i = 0; i < this.state.attributeInfo.length; i++) {
-                var newElement = this.state.inputJson.concat(JSON.parse(this.state.attributeInfo[i]["field_info"])["Name"]);
-                this.setState({
-                    inputJson : newElement//inputJson holds the name for all the fields
-                });
-            }
     });
 }
 
@@ -109,7 +87,6 @@ fetchPrototype = () => {
 
   componentDidMount() {
     this.fetchData();
-    this.fetchInputFieldsData();
     this.fetchAuthUsersData();
     this.fetchRegisterUsers();
 
@@ -119,7 +96,6 @@ fetchPrototype = () => {
 
 
     changeFunction = (event)=>{
-        alert(event.target.value);
 
         var i;
         i = 0;
@@ -191,6 +167,7 @@ fetchPrototype = () => {
         <label>User</label>
         <select className = "input1"
          type = "email" name="user_email" required>
+         <option></option>
         {this.state.authUsers.map((item, index) => (
                 <option>{item.email}</option>
         ))};
@@ -198,8 +175,8 @@ fetchPrototype = () => {
 
         <label>Parent</label>
         <select className = "input1"
-        type = "email" name="parent_email">
-
+        type = "email" name="parent_email" required>
+        <option></option>
         {this.state.registerUsers.map((item, index) => (
                 <option>{item.entity_name}</option>
         ))};
@@ -218,14 +195,12 @@ fetchPrototype = () => {
         </select>
         </div>
 
-        <h3>Customized Fields</h3>
-
+        <h3>Customized Additional Fields</h3>
                 {Object.keys(this.state.selectedAttributesString).map((item,index)=>(
                     <div>
                         <input name={index} type={this.state.selectedAttributesString[item]} placeholder = {item} />
                     </div>
                 ))}
-
 
         <div className = "login-btns input_div" >
         By signing up I agree to the <

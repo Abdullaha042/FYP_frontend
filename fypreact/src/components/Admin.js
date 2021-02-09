@@ -19,6 +19,8 @@ function Admin() {
         <
         div >
         <
+        div className = "container-lg" >
+        <
         div className = "row-fluid main-pg" >
         <
         div className = "col-lg-4 offset-lg-0 offset-md-0 offset-sm-0 col-sm-12 col-md-12 main-pg-heading" >
@@ -95,6 +97,7 @@ function Admin() {
 
         </div>
         <
+        /div> <
         /div> <
         /div>
 
