@@ -8,7 +8,6 @@ import {
 import AddDepartmentEntity from './AddDepartmentEntity';
 import AddThingEntity from './AddThingEntity';
 import AddUserEntity from './AddUserEntity'
-import AddInputFields from './AddInputFields'
 import AddNewPrototype from './AddNewPrototype'
 
 function Entities() {
@@ -36,10 +35,7 @@ function Entities() {
         NavLink to = "/Entities/AddDepartmentEntity"
         style = {
             { textDecoration: "none", color: "white" } } > < button className = "btn btn-dark col-md-3 col-sm-10" > Depatrment < /button></NavLink >
-        <
-        NavLink to = "/Entities/AddInputFields"
-        style = {
-            { textDecoration: "none", color: "white" } } > < button className = "btn btn-dark col-md-3 col-sm-10" > Add Input Fields < /button></NavLink >
+
         <
         NavLink to = "/Entities/AddNewPrototype"
         style = {
@@ -58,10 +54,7 @@ function Entities() {
         Route path = "/Entities/AddDepartmentEntity"
          component = { AddDepartmentEntity }
         />
-        <
-        Route path = "/Entities/AddInputFields"
-        component = { AddInputFields }
-        />
+
         <
         Route path = "/Entities/AddNewPrototype"
         component = { AddNewPrototype }

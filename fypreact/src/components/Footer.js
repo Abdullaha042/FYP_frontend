@@ -7,7 +7,7 @@ function Footer() {
     return ( <
         div >
         <
-        div className = "container-lg" >
+        div className = "" >
 
         <
         footer className = "row-fluid" >

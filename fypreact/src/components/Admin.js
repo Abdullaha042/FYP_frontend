@@ -1,5 +1,6 @@
 import React from 'react'
 import './Admin.css';
+import Footer from './Footer.js';
 import pic from '../image/adminpic.jpg'
 import { faBars, faHome } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -9,7 +10,6 @@ import {
     BrowserRouter
 } from "react-router-dom";
 import Entities from './Entities.js';
-import Roles from './Roles';
 import Organogram from './Organo';
 
 function Admin() {
@@ -17,9 +17,9 @@ function Admin() {
     return ( <
         BrowserRouter >
         <
-        div >
+        div className="div_col">
         <
-        div className = "container-lg" >
+        div className="container-lg">
         <
         div className = "row-fluid main-pg" >
         <
@@ -57,43 +57,33 @@ function Admin() {
 
 
        <NavLink to = "/Entities"
-
             style = {
             { textDecoration: "none", color: "white" } } >
-            < button className = "btn btn-danger col-md-3 col-sm-10" >Entities< /button>
-       </NavLink >
-
-
-       <NavLink to = "/Roles"
-
-            style = {
-                { textDecoration: "none", color: "white" } } >
-                < button className = "btn btn-danger col-md-3 col-sm-10" >Roles< /button>
+            < button className = "btn btn-danger col-md-3 col-sm-10" >ENTITY< /button>
        </NavLink >
 
 
         <NavLink to = "/Organogram"
-
             style = {
                 { textDecoration: "none", color: "white" } } >
-                < button className = "btn btn-danger col-md-4 col-sm-10" >Organogram< /button>
+                < button className = "btn btn-danger col-md-4 col-sm-10" >ORGANO< /button>
         </NavLink >
 
 
         </div> <
         div className = "col-md-7 col-sm-7 col-xs-5 main-login-sub-pg-2 row" >
 
+        <Route path = "/"
+        exact component = { Entities }
+        />
 
         <Route path = "/Entities"
         exact component = { Entities }
-        /> <
-        Route path = "/Roles"
-        exact component = { Roles }
-        /> <
+        />
+        <
         Route path = "/Organogram"
         exact component = { Organogram }
         />
-
 
         </div>
         <
@@ -102,7 +92,11 @@ function Admin() {
         /div>
 
         <
-        /div> <
+        /div>
+
+        <Footer />
+
+        <
         /BrowserRouter>
     )
 }

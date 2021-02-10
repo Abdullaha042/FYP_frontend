@@ -299,12 +299,10 @@ function resetAllItems() {
 render(){
 return(
 
-//id="content" style={{top: "85px", bottom: "24px"}}
-//style={{width: "100%", height: "100%", overflow: "auto",  position: "absolute", top: "85px", left: "55px"}}
-//style={{width: "50px", height: "30px", position: "absolute", top: "90px", left: "5px"}}
-	<div >
 
-		<div style={{width:"450px", height:"300px",marginRight:"0px"}}>
+	<div className = "form" >
+
+		<div style={{height:"500px",marginRight:"0px"}}>
 			<canvas id="diagramCanvas" >
 				This page requires a browser that supports HTML 5 Canvas element.
 			</canvas>

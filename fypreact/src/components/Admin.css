@@ -1,7 +1,18 @@
+.main-pg {
+    display: flex;
+    padding: 25px 0px 25px;
+    background: #10293D;
+}
+
   * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+
+  }
+
+  .div_col{
+    background-color: #10293D;
   }
 
 .main-pg .main-pg-heading,
@@ -105,11 +116,6 @@ select {
 .main-pg .main-login-pg .main-login-sub-pg-2 form input,
 .main-pg .main-login-pg .main-login-sub-pg-2 form select {
     background-color: white;
-}
-
-.main-pg {
-    display: flex;
-    padding: 40px 0px;
 }
 
 .main-pg .main-pg-heading {
