@@ -48,15 +48,15 @@ handleFormSubmit = (event) =>{
 render(){
 
     return ( <div>
-        <div className = "container" >
-            <div className = "row-fluid main-pgS" >
-                <div className = "col-lg-6 offset-lg-0 offset-md-2 offset-sm-1 col-sm-10 col-md-8 main-pg-headingS" >
+        <div>
+            <div className = "row-fluid main-pg" >
+                <div className = "col-lg-6 offset-lg-0 offset-md-2 offset-sm-1 col-sm-10 col-md-8 main-pg-heading" >
                 <h1>Sign In Page </h1>
                 </div>
 
-                <div className = "col-lg-6 offset-lg-0 offset-md-1 offset-sm-1 col-sm-10 col-md-10 main-login-pgS row" >
+                <div className = "col-lg-6 offset-lg-0 offset-md-1 offset-sm-1 col-sm-10 col-md-10 main-login-pg row" >
 
-                <div className = "col-md-7 col-sm-12 main-login-sub-pg-2S" >
+                <div className = "col-md-7 col-sm-12 main-login-sub-pg-2" >
 
                 <form action = "" method="" onSubmit={this.handleFormSubmit}>
 
@@ -64,9 +64,9 @@ render(){
                 <input type = "text" name="email" placeholder = "Email"  required/ >
                 <h5 >Enter your Password </h5>
                 <input type = "password" name="password"placeholder = "Password" required / >
-                <div className = "login-btnsS" >
+                <div className = "login-btns" >
                 <button type = "submit" className = "login-btnS btn" > LOGIN < /button>
-                <button type = "" className = "signup-btnS btn" > SIGNUP < /button>
+                <button type = "" className = "signup-btn btn" > SIGNUP < /button>
                 </div>
                 </form>
                 <a href="http://localhost:8000/reset_password/" >Forget Password</a>

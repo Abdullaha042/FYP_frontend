@@ -152,7 +152,7 @@ render(){
         placeholder = "Name" / >
 
 
-        <label>Post</label>
+        <label>Type</label>
         <select className = "input1" onChange={this.changeFunction}
          type = "text" name="entity_desc_type" required>
          <option></option>

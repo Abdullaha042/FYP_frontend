@@ -11,6 +11,7 @@ import {
 } from "react-router-dom";
 import Entities from './Entities.js';
 import Organogram from './Organo';
+import EditOrganogram from './EditOrgano';
 
 function Admin() {
 
@@ -70,6 +71,13 @@ function Admin() {
         </NavLink >
 
 
+        <NavLink to = "/EditOrganogram"
+            style = {
+                { textDecoration: "none", color: "white" } } >
+                < button className = "btn btn-danger col-md-4 col-sm-10" >Edit_ORGANO< /button>
+        </NavLink >
+
+
         </div> <
         div className = "col-md-7 col-sm-7 col-xs-5 main-login-sub-pg-2 row" >
 
@@ -83,6 +91,10 @@ function Admin() {
         <
         Route path = "/Organogram"
         exact component = { Organogram }
+        />
+        <
+        Route path = "/EditOrganogram"
+        exact component = { EditOrganogram }
         />
 
         </div>

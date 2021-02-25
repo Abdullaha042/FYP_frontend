@@ -132,9 +132,7 @@ diagram = Diagram.create(document.getElementById("diagramCanvas"));
 
   for (var i = 0; i < this.state.StaffInfo.length; i++)
   {
-
-
-    var node = new DeanNode(diagram);
+   var node = new DeanNode(diagram);
   node.setBounds(new Rect(80, 225, 60, 25));
   node.setFaculty(this.state.StaffInfo[i]["entity_name"]);
   node.setDean(this.state.StaffInfo[i]["entity_type"]);
@@ -144,8 +142,11 @@ diagram = Diagram.create(document.getElementById("diagramCanvas"));
   node.getComponent("Underline").pen = "#04316a";
   diagram.addItem(node);
 
+    //alert(this.state.StaffInfo[i]["entity_name"] + " => " + this.state.StaffInfo[i]["entity_attributes"].parent);
+
      if(this.state.StaffInfo[i]["entity_name"] != this.state.StaffInfo[i]["entity_attributes"].parent)
      {
+
         var parent = getParentNode(this.state.StaffInfo[i]["entity_attributes"].parent);
 		diagram.getFactory().createDiagramLink(parent, node);
      }

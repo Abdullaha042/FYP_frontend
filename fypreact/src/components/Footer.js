@@ -16,28 +16,25 @@ function Footer() {
         <
         div >
         <
-        h3 > Services < /h3> <
-        p >
-        In VS Code, open the Color Theme picker with File Preferences Color Theme....You can also use the keyboard shortcut Ctrl + K Ctrl + T to display the picker.Use the cursor keys to preview the colors of the theme.Select the theme you want and press Ente
+        h3 > Services < /h3>
+        <p>
 
-        <
-        /p>     <
+        Development Authorities have no of departments which shares information among themselves. A Web based application in which Land, Town, Civil and Marketing departments of a society collaborate with each other for the construction and development. The land department purchases land and handover to the town department which decides plots on the purchased land. The planned document delivers to the Civil department to execute the work and Marketing department for marketing.
+
+        </p>
+        </div> <
         /div> <
-        /div> <
-        div className = "main-footer border-footer col-md-5 col-sm-12" >
-        <
+        div className = "main-footer border-footer col-md-5 col-sm-12" > <
         div className = "sub-footer" >
         <
-        h3 > Categories < /h3> <
-        p > In VS Code, open the Color Theme picker with File Preferences Color Theme....You can also use the keyboard sh <
-        /p> <
-        /div> <
-        div className = "sub-footer" >
-        <
-        h3 > Team < /h3> <
-        p > Shortcut Ctrl + K Ctrl + T to display the picker.Use the cursor keys to preview the colors of the theme.Select the theme you want and press Ente <
-        /p> <
-        /div> <
+        h3 > Team < /h3>
+        <p>
+        <li>Abdullah Nawaz <a>bsef17a042@pucit.edu.pk</a></li>
+        <li>Zain Ahmad <a>bsef17a020@pucit.edu.pk</a></li>
+        <li>Muhammad Umar <a>bsef17a014@pucit.edu.pk</a></li>
+        <li>Sheraz Ahmad <a>bsef17a030@pucit.edu.pk</a></li>
+        </p>
+        </div> <
         /div> <
         div className = "main-footer  col-md-2" >
         <

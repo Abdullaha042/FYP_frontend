@@ -43,7 +43,6 @@ render(){
             <div className = "row-fluid main-pg" >
                 <div className = "col-lg-6 offset-lg-0 offset-md-2 offset-sm-1 col-sm-10 col-md-8 main-pg-heading" >
                 <h1>Logged in Page</h1>
-                <Admin/>
 
                 <button className="btn btn-danger" onClick={this.logoutFunction}>Logout</button>
                 </div>

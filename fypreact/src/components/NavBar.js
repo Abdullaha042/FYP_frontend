@@ -10,6 +10,7 @@ import {
 import SignUpModal from "./SignUpModal";
 import SignIn from "./SignIn";
 import AutherizedTestPage from "./AutherizedTestPage";
+import Footer from './Footer'
 
 function NavBar() {
     const [open, setOpen] = useState(false);
@@ -19,7 +20,7 @@ function NavBar() {
         <
         div >
         <
-        div className = "container-lg container-fluid-md" >
+        div className = "container-fluid-md" >
         <
         div className = "nav-top " >
         <
@@ -82,7 +83,9 @@ function NavBar() {
         /div>
 
         <
-        /div> <
+        /div>
+        <Footer />
+        <
         /HashRouter>
     )
 }

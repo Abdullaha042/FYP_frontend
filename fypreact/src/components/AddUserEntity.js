@@ -175,7 +175,7 @@ fetchPrototype = () => {
 
         <label>Parent</label>
         <select className = "input1"
-        type = "email" name="parent_email" required>
+        type = "email" name="parent_email">
         <option></option>
         {this.state.registerUsers.map((item, index) => (
                 <option>{item.entity_name}</option>
