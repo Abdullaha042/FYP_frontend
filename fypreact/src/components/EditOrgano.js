@@ -90,9 +90,8 @@ render(){
                 </select>
 
             </div>
-        <b>Editable Information</b>
             <div>
-                <button onClick={this.editFunction}>CONFIRM & GO BACK</button>
+                <button onClick={this.editFunction}>CONFIRM</button>
             </div>
         </div>
     )

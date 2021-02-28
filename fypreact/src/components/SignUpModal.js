@@ -9,7 +9,7 @@ class SignUpModal extends React.Component{
 
     const mail = event.target.elements.email.value;
     const usrnm = event.target.elements.username.value;
-//    const dept = event.target.elements.department.value;
+
     const pass = event.target.elements.password.value;
     const confirmPass = event.target.elements.confirmpassword.value;
 

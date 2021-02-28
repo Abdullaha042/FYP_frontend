@@ -144,15 +144,23 @@ diagram = Diagram.create(document.getElementById("diagramCanvas"));
 
     //alert(this.state.StaffInfo[i]["entity_name"] + " => " + this.state.StaffInfo[i]["entity_attributes"].parent);
 
-     if(this.state.StaffInfo[i]["entity_name"] != this.state.StaffInfo[i]["entity_attributes"].parent)
+     /*if(this.state.StaffInfo[i]["entity_name"] != this.state.StaffInfo[i]["entity_attributes"].parent)
      {
 
         var parent = getParentNode(this.state.StaffInfo[i]["entity_attributes"].parent);
 		diagram.getFactory().createDiagramLink(parent, node);
-     }
+     }*/
 }
 
-
+var nodes = diagram.getNodes();
+for (var i = 0; i < this.state.StaffInfo.length; i++)
+  {
+    if(this.state.StaffInfo[i]["entity_name"] != this.state.StaffInfo[i]["entity_attributes"].parent)
+     {
+        var parent = getParentNode(this.state.StaffInfo[i]["entity_attributes"].parent);
+		diagram.getFactory().createDiagramLink(parent, nodes[i]);
+     }
+  }
 
 
   var links = diagram.getLinks();
