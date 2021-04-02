@@ -30,7 +30,7 @@ handleFormSubmit = (event) =>{
 
 				this.setState({mytokenaccess: res.data.access});
 				this.setState({mytokenrefresh: res.data.refresh});
-				this.props.history.push('/AutherizedTestPage');
+				this.props.history.push('/AutherizedTestPagez');
 				alert("Access Granted");
 				console.log(res);
 				console.log(res.data);

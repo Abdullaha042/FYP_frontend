@@ -13,6 +13,10 @@ import Entities from './Entities.js';
 import Organogram from './Organo';
 import EditOrganogram from './EditOrgano';
 
+import Process from './Process';
+import EditProcess from './EditProcess';
+
+
 function Admin() {
 
     return ( <
@@ -60,21 +64,33 @@ function Admin() {
        <NavLink to = "/Entities"
             style = {
             { textDecoration: "none", color: "white" } } >
-            < button className = "btn btn-danger col-md-3 col-sm-10" >ENTITY< /button>
+            < button className = "btn btn-danger col-md-3 col-sm-10" >Entity< /button>
        </NavLink >
 
 
         <NavLink to = "/Organogram"
             style = {
                 { textDecoration: "none", color: "white" } } >
-                < button className = "btn btn-danger col-md-4 col-sm-10" >ORGANO< /button>
+                < button className = "btn btn-danger col-md-4 col-sm-10" >Org Chart< /button>
         </NavLink >
 
 
         <NavLink to = "/EditOrganogram"
             style = {
                 { textDecoration: "none", color: "white" } } >
-                < button className = "btn btn-danger col-md-4 col-sm-10" >Edit_ORGANO< /button>
+                < button className = "btn btn-danger col-md-4 col-sm-10" >Edit Chart< /button>
+        </NavLink >
+
+        <NavLink to = "/Process"
+            style = {
+                { textDecoration: "none", color: "white" } } >
+                < button className = "btn btn-danger col-md-4 col-sm-10" >Process< /button>
+        </NavLink >
+
+        <NavLink to = "/EditProcess"
+            style = {
+                { textDecoration: "none", color: "white" } } >
+                < button className = "btn btn-danger col-md-4 col-sm-10" >Edit Process< /button>
         </NavLink >
 
 
@@ -95,6 +111,14 @@ function Admin() {
         <
         Route path = "/EditOrganogram"
         exact component = { EditOrganogram }
+        />
+        <
+        Route path = "/Process"
+        exact component = { Process }
+        />
+        <
+        Route path = "/EditProcess"
+        exact component = { EditProcess }
         />
 
         </div>

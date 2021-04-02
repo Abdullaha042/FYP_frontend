@@ -13,6 +13,7 @@
     "axios": "^0.20.0",
     "bootstrap": "^4.5.3",
     "diagram-library-react": "^1.0.0",
+    "jquery": "^3.6.0",
     "mindfusion-common": "^1.2.2",
     "react": "^16.14.0",
     "react-bootstrap": "^1.4.0",

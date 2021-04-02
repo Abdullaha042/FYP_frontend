@@ -132,24 +132,15 @@ diagram = Diagram.create(document.getElementById("diagramCanvas"));
 
   for (var i = 0; i < this.state.StaffInfo.length; i++)
   {
-   var node = new DeanNode(diagram);
-  node.setBounds(new Rect(80, 225, 60, 25));
-  node.setFaculty(this.state.StaffInfo[i]["entity_name"]);
-  node.setDean(this.state.StaffInfo[i]["entity_type"]);
-  node.setDetails(this.state.StaffInfo[i]["entity_desc_type"])
-  node.setId(this.state.StaffInfo[i]["entity_name"]);
-  node.getComponent("Underline").brush = "#9edee8";
-  node.getComponent("Underline").pen = "#04316a";
-  diagram.addItem(node);
-
-    //alert(this.state.StaffInfo[i]["entity_name"] + " => " + this.state.StaffInfo[i]["entity_attributes"].parent);
-
-     /*if(this.state.StaffInfo[i]["entity_name"] != this.state.StaffInfo[i]["entity_attributes"].parent)
-     {
-
-        var parent = getParentNode(this.state.StaffInfo[i]["entity_attributes"].parent);
-		diagram.getFactory().createDiagramLink(parent, node);
-     }*/
+    var node = new DeanNode(diagram);
+    node.setBounds(new Rect(80, 225, 60, 25));
+    node.setFaculty(this.state.StaffInfo[i]["entity_name"]);
+    node.setDean(this.state.StaffInfo[i]["entity_type"]);
+    node.setDetails(this.state.StaffInfo[i]["entity_desc_type"])
+    node.setId(this.state.StaffInfo[i]["entity_name"]);
+    node.getComponent("Underline").brush = "#9edee8";
+    node.getComponent("Underline").pen = "#04316a";
+    diagram.addItem(node);
 }
 
 var nodes = diagram.getNodes();
@@ -300,7 +291,6 @@ function resetAllItems() {
 
 
   componentDidMount() {
-
   this.SettingStaffInfo();
  // this.Testing();
 }
